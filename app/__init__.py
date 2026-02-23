@@ -4,7 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 app = Flask(__name__)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = (
-"cockroachdb://durgajagadeesh:sk7neRNanjv4aNeofdc3ZQ@palm-bugbear-11720.jxf.gcp-asia-southeast1.cockroachlabs.cloud:26257/aj?sslmode=verify-full&sslrootcert=ca.crt"
+"cockroachdb://durgajagadeesh:mGoTmjrnjI5ILVrUAyK8pw@palm-bugbear-11720.jxf.gcp-asia-southeast1.cockroachlabs.cloud:26257/aj?sslmode=verify-full&sslrootcert=ca.crt"
     )
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
@@ -28,16 +28,13 @@ class Assignment(db.Model):
         db.ForeignKey('student.id'),
         nullable=False
     )
-
 # -------------------- Create Tables --------------------
 with app.app_context():
     db.create_all()
-# -------------------- Routes --------------------
 @app.route("/")
 def home():
     return "Server is running"
 # -------------------- Student APIs --------------------
-
 @app.route("/student", methods=["POST"])
 def create_student():
     data = request.get_json()
